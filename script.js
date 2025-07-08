@@ -36,6 +36,8 @@ const calculateRoiBtn = document.getElementById('calculateRoiBtn');
 const roiValue = document.getElementById('roiValue');
 const roiInYearValue = document.getElementById('roiInYearValue');
 const totalReturnValue = document.getElementById('totalReturnValue');
+const profitAmountValue = document.getElementById('profitAmountValue');
+const profitAmountPerMonthValue = document.getElementById('profitAmountPerMonthValue');
 const finalResultValue = document.getElementById('finalResultValue');
 const netProfitValue = document.getElementById('netProfitValue');
 const roiMessage = document.getElementById('roiMessage');
@@ -51,6 +53,8 @@ calculateRoiBtn.addEventListener('click', () => {
         roiValue.textContent = '';
         roiInYearValue.textContent = '';
         totalReturnValue.textContent = '';
+        profitAmountValue.textContent = '';
+        profitAmountPerMonthValue.textContent = '';
         finalResultValue.textContent = '';
         netProfitValue.textContent = '';
         return;
@@ -61,6 +65,7 @@ calculateRoiBtn.addEventListener('click', () => {
     const roiInYear = roi / durationInYears;
     const profitAmount = investment * (profit / 100);
     const totalReturn = investment + profitAmount;
+    const profitAmountPerMonth = profitAmount / duration;
 
     const finalResult = (investment * (1 + roiInYear / 100)) * (1 - inflation / 100);
     const netProfit = finalResult - investment;
@@ -68,6 +73,8 @@ calculateRoiBtn.addEventListener('click', () => {
     roiValue.textContent = roi.toFixed(2);
     roiInYearValue.textContent = roiInYear.toFixed(2);
     totalReturnValue.textContent = totalReturn.toFixed(2);
+    profitAmountValue.textContent = profitAmount.toFixed(2);
+    profitAmountPerMonthValue.textContent = profitAmountPerMonth.toFixed(2);
     finalResultValue.textContent = finalResult.toFixed(2);
     netProfitValue.textContent = netProfit.toFixed(2);
 
