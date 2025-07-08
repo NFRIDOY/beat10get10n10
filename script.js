@@ -37,6 +37,7 @@ const roiValue = document.getElementById('roiValue');
 const roiInYearValue = document.getElementById('roiInYearValue');
 const totalReturnValue = document.getElementById('totalReturnValue');
 const finalResultValue = document.getElementById('finalResultValue');
+const netProfitValue = document.getElementById('netProfitValue');
 const roiMessage = document.getElementById('roiMessage');
 
 calculateRoiBtn.addEventListener('click', () => {
@@ -51,6 +52,7 @@ calculateRoiBtn.addEventListener('click', () => {
         roiInYearValue.textContent = '';
         totalReturnValue.textContent = '';
         finalResultValue.textContent = '';
+        netProfitValue.textContent = '';
         return;
     }
 
@@ -61,11 +63,13 @@ calculateRoiBtn.addEventListener('click', () => {
     const totalReturn = investment + profitAmount;
 
     const finalResult = (investment * (1 + roiInYear / 100)) * (1 - inflation / 100);
+    const netProfit = finalResult - investment;
 
     roiValue.textContent = roi.toFixed(2);
     roiInYearValue.textContent = roiInYear.toFixed(2);
     totalReturnValue.textContent = totalReturn.toFixed(2);
     finalResultValue.textContent = finalResult.toFixed(2);
+    netProfitValue.textContent = netProfit.toFixed(2);
 
     if (finalResult > investment) {
         roiMessage.textContent = 'Profitable investment after considering inflation.';
