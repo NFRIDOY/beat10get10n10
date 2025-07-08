@@ -27,3 +27,44 @@ calculateBtn.addEventListener('click', () => {
         resultMessage.textContent = 'Loss';
     }
 });
+
+const roiInvestmentInput = document.getElementById('roiInvestment');
+const roiProfitInput = document.getElementById('roiProfit');
+const durationInput = document.getElementById('duration');
+const roiInflationInput = document.getElementById('roiInflation');
+const calculateRoiBtn = document.getElementById('calculateRoiBtn');
+const roiValue = document.getElementById('roiValue');
+const roiInYearValue = document.getElementById('roiInYearValue');
+const finalResultValue = document.getElementById('finalResultValue');
+const roiMessage = document.getElementById('roiMessage');
+
+calculateRoiBtn.addEventListener('click', () => {
+    const investment = parseFloat(roiInvestmentInput.value);
+    const profit = parseFloat(roiProfitInput.value);
+    const duration = parseFloat(durationInput.value);
+    const inflation = parseFloat(roiInflationInput.value);
+
+    if (isNaN(investment) || isNaN(profit) || isNaN(duration) || isNaN(inflation) || duration <= 0) {
+        roiMessage.textContent = 'Please enter valid positive numbers in all fields.';
+        roiValue.textContent = '';
+        roiInYearValue.textContent = '';
+        finalResultValue.textContent = '';
+        return;
+    }
+
+    const durationInYears = duration / 12;
+    const roi = profit;
+    const roiInYear = roi / durationInYears;
+
+    const finalResult = (investment * (1 + roiInYear / 100)) * (1 - inflation / 100);
+
+    roiValue.textContent = roi.toFixed(2);
+    roiInYearValue.textContent = roiInYear.toFixed(2);
+    finalResultValue.textContent = finalResult.toFixed(2);
+
+    if (finalResult > investment) {
+        roiMessage.textContent = 'Profitable investment after considering inflation.';
+    } else {
+        roiMessage.textContent = 'Investment is not profitable after considering inflation.';
+    }
+});
