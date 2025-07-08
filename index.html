@@ -38,11 +38,11 @@
         </div>
         <div class="input-group">
             <label for="roiProfit">Profit (%):</label>
-            <input type="number" id="roiProfit" value="18.25">
+            <input type="number" id="roiProfit" value="18">
         </div>
         <div class="input-group">
             <label for="duration">Duration (Months):</label>
-            <input type="number" id="duration" value="1">
+            <input type="number" id="duration" value="12">
         </div>
         <div class="input-group">
             <label for="roiInflation">Inflation (%):</label>
@@ -50,7 +50,8 @@
         </div>
         <button id="calculateRoiBtn">Calculate ROI</button>
         <div class="result">
-            <h2>ROI: <span id="roiValue"></span>%</h2>
+            <h2>Profit: <span id="roiValue"></span>%</h2>
+            <h2>ROI: <span id="totalReturnValue"></span></h2>
             <h2>ROI in Year: <span id="roiInYearValue"></span>%</h2>
             <h2>Final Result: <span id="finalResultValue"></span></h2>
             <p id="roiMessage"></p>

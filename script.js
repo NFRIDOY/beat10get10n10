@@ -35,6 +35,7 @@ const roiInflationInput = document.getElementById('roiInflation');
 const calculateRoiBtn = document.getElementById('calculateRoiBtn');
 const roiValue = document.getElementById('roiValue');
 const roiInYearValue = document.getElementById('roiInYearValue');
+const totalReturnValue = document.getElementById('totalReturnValue');
 const finalResultValue = document.getElementById('finalResultValue');
 const roiMessage = document.getElementById('roiMessage');
 
@@ -48,6 +49,7 @@ calculateRoiBtn.addEventListener('click', () => {
         roiMessage.textContent = 'Please enter valid positive numbers in all fields.';
         roiValue.textContent = '';
         roiInYearValue.textContent = '';
+        totalReturnValue.textContent = '';
         finalResultValue.textContent = '';
         return;
     }
@@ -55,11 +57,14 @@ calculateRoiBtn.addEventListener('click', () => {
     const durationInYears = duration / 12;
     const roi = profit;
     const roiInYear = roi / durationInYears;
+    const profitAmount = investment * (profit / 100);
+    const totalReturn = investment + profitAmount;
 
     const finalResult = (investment * (1 + roiInYear / 100)) * (1 - inflation / 100);
 
     roiValue.textContent = roi.toFixed(2);
     roiInYearValue.textContent = roiInYear.toFixed(2);
+    totalReturnValue.textContent = totalReturn.toFixed(2);
     finalResultValue.textContent = finalResult.toFixed(2);
 
     if (finalResult > investment) {
