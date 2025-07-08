@@ -40,6 +40,7 @@ const profitAmountValue = document.getElementById('profitAmountValue');
 const profitAmountPerMonthValue = document.getElementById('profitAmountPerMonthValue');
 const finalResultValue = document.getElementById('finalResultValue');
 const netProfitValue = document.getElementById('netProfitValue');
+const afterInflationProfitPercentageValue = document.getElementById('afterInflationProfitPercentageValue');
 const roiMessage = document.getElementById('roiMessage');
 
 calculateRoiBtn.addEventListener('click', () => {
@@ -57,6 +58,7 @@ calculateRoiBtn.addEventListener('click', () => {
         profitAmountPerMonthValue.textContent = '';
         finalResultValue.textContent = '';
         netProfitValue.textContent = '';
+        afterInflationProfitPercentageValue.textContent = '';
         return;
     }
 
@@ -69,6 +71,7 @@ calculateRoiBtn.addEventListener('click', () => {
 
     const finalResult = (investment * (1 + roiInYear / 100)) * (1 - inflation / 100);
     const netProfit = finalResult - investment;
+    const afterInflationProfitPercentage = (netProfit / investment) * 100;
 
     roiValue.textContent = roi.toFixed(2);
     roiInYearValue.textContent = roiInYear.toFixed(2);
@@ -77,6 +80,7 @@ calculateRoiBtn.addEventListener('click', () => {
     profitAmountPerMonthValue.textContent = profitAmountPerMonth.toFixed(2);
     finalResultValue.textContent = finalResult.toFixed(2);
     netProfitValue.textContent = netProfit.toFixed(2);
+    afterInflationProfitPercentageValue.textContent = afterInflationProfitPercentage.toFixed(2);
 
     if (finalResult > investment) {
         roiMessage.textContent = 'Profitable investment after considering inflation.';
